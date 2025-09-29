@@ -1,0 +1,10 @@
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="text" name="user_question" placeholder="Ask something about your data...">
+  <button type="submit">Upload and Analyze</button>
+</form>
+
+{% if prediction %}<h2>Predicted PIN: {{ prediction }}</h2>{% endif %}
+{% if telemetry_stats %}{{ telemetry_stats|safe }}{% endif %}
+{% if chatbot_response %}<h3>Chatbot Says:</h3><p>{{ chatbot_response }}</p>{% endif %}
